@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    // Declare variables 
+    std::string firstName, lastName, streetAddress, city, zipCode;
+
+    // Prompt for person info
+    std::cout << "Enter First Name: ";
+    std::getline(std::cin, firstName); 
+
+    std::cout << "Enter Last Name: ";
+    std::getline(std::cin, lastName);
+
+    std::cout << "Enter Street Address: ";
+    std::getline(std::cin, streetAddress);
+
+    std::cout << "Enter City: ";
+    std::getline(std::cin, city);
+
+    std::cout << "Enter Zip Code: ";
+    std::getline(std::cin, zipCode);
+
+    // Print person info
+    std::cout << "\nInformation for the fictional person:\n";
+    std::cout << "First Name: " << firstName << std::endl;
+    std::cout << "Last Name: " << lastName << std::endl;
+    std::cout << "Street Address: " << streetAddress << std::endl;
+    std::cout << "City: " << city << std::endl;
+    std::cout << "Zip Code: " << zipCode << std::endl;
+
+    return 0;
+}

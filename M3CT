@@ -1,0 +1,33 @@
+#include <iostream>
+
+int main() {
+    int a, b, c;
+
+    // Prompt user for 3 intergers
+    std::cout << "Enter three integer values: ";
+    std::cin >> a >> b >> c;
+
+    // Create pointers
+    int* pA = new int(a);
+    int* pB = new int(b);
+    int* pC = new int(c);
+
+    // Display variable content
+    std::cout << "Values of the variables:" << std::endl;
+    std::cout << "a = " << a << std::endl;
+    std::cout << "b = " << b << std::endl;
+    std::cout << "c = " << c << std::endl;
+
+    // Display pointer content
+    std::cout << "Values pointed to by the pointers:" << std::endl;
+    std::cout << "*pA = " << *pA << std::endl;
+    std::cout << "*pB = " << *pB << std::endl;
+    std::cout << "*pC = " << *pC << std::endl;
+
+    // Deleting allocated memory
+    delete pA;
+    delete pB;
+    delete pC;
+
+    return 0;
+}

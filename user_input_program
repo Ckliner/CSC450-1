@@ -1,0 +1,56 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <algorithm>
+
+void reverseFileContent(const std::string& inputFileName, const std::string& outputFileName) {
+    // Open input file 
+    std::ifstream inputFile(inputFileName);
+    if (!inputFile) {
+        std::cerr << "Error opening file: " << inputFileName << std::endl;
+        return;
+    }
+    
+    // Read content file
+    std::string content((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>());
+    inputFile.close();
+
+    // Reverse the content
+    std::reverse(content.begin(), content.end());
+
+    // Open output file 
+    std::ofstream outputFile(outputFileName);
+    if (!outputFile) {
+        std::cerr << "Error opening file: " << outputFileName << std::endl;
+        return;
+    }
+
+    // Write reversed content
+    outputFile << content;
+    outputFile.close();
+}
+
+int main() {
+    std::string userInput;
+    std::string inputFileName = "CSC450_CT5_mod5.txt";
+    std::string outputFileName = "CSC450-mod5-reverse.txt";
+
+    // Get input
+    std::cout << "Enter data to be stored in the file: ";
+    std::getline(std::cin, userInput);
+
+    // Append input 
+    std::ofstream outFile(inputFileName, std::ios_base::app); // Open in append mode
+    if (!outFile) {
+        std::cerr << "Error opening file: " << inputFileName << std::endl;
+        return 1;
+    }
+    outFile << userInput << std::endl;
+    outFile.close();
+
+    // Reverse & Store in new file
+    reverseFileContent(inputFileName, outputFileName);
+
+    std::cout << "Data appended and file reversed successfully." << std::endl;
+    return 0;
+}

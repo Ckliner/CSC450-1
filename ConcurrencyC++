@@ -1,0 +1,48 @@
+
+public class Portfolio {
+
+    public static void main(String[] args) {
+        // First thread count to 20
+        Thread countUpThread = new Thread(new CountUp());
+        countUpThread.start();
+
+        // wait for first thread to finish before starting second
+        try {
+            countUpThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Second thread count down to 0
+        Thread countDownThread = new Thread(new CountDown());
+        countDownThread.start();
+    }
+}
+
+class CountUp implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 0; i <= 20; i++) {
+            System.out.println("Count Up: " + i);
+            try {
+                Thread.sleep(100); // Simulate work
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class CountDown implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 20; i >= 0; i--) {
+            System.out.println("Count Down: " + i);
+            try {
+                Thread.sleep(100); // Simulate work
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
